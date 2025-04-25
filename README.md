@@ -29,7 +29,9 @@ A simple web-based calculator to estimate your **ASB (Amanah Saham Bumiputera)**
 
 ## 📜 License
 
-This project is open-source under the [MIT License](LICENSE).
+![WTFPL badge](https://img.shields.io/badge/license-WTFPL-brightgreen.svg)
+
+This project is licensed under the **Do What the F*ck You Want to Public License** – [WTFPL](http://www.wtfpl.net/)
 
 ---
 
