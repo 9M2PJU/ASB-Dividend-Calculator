@@ -1,115 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ASB Dividend Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f3f4f6;
-      padding: 20px;
-    }
-    h1 {
-      color: #111827;
-    }
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    input[type="number"] {
-      width: 100%;
-      padding: 8px;
-      margin: 6px 0 12px;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #1d4ed8;
-    }
-    .result {
-      margin-top: 20px;
-      background: #e0f2fe;
-      padding: 15px;
-      border-radius: 8px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>🧮 ASB Dividend Calculator</h1>
-    <p>Enter your monthly balances and the announced dividend/bonus rates:</p>
-    <form id="asbForm">
-      <div id="balanceInputs"></div>
+---
+layout: default
+title: ASB Dividend Calculator
+---
 
-      <label for="dividendRate">Dividend Rate (%)</label>
-      <input type="number" id="dividendRate" step="0.01" required />
+<div class="container">
+  <h1>🧮 ASB Dividend Calculator</h1>
+  <p>Enter your monthly balances and the announced dividend/bonus rates:</p>
+  <form id="asbForm">
+    <div id="balanceInputs"></div>
 
-      <label for="bonusRate">Bonus Rate (%)</label>
-      <input type="number" id="bonusRate" step="0.01" required />
+    <label for="dividendRate">Dividend Rate (%)</label>
+    <input type="number" id="dividendRate" step="0.01" required />
 
-      <button type="submit">Calculate</button>
-    </form>
+    <label for="bonusRate">Bonus Rate (%)</label>
+    <input type="number" id="bonusRate" step="0.01" required />
 
-    <div class="result" id="result" style="display: none;"></div>
-  </div>
+    <button type="submit">Calculate</button>
+  </form>
 
-  <script>
-    const months = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-    ];
+  <div class="result" id="result" style="display: none;"></div>
+</div>
 
-    const balanceContainer = document.getElementById("balanceInputs");
-    months.forEach((month, i) => {
-      balanceContainer.innerHTML += `
-        <label for="month${i}">${month} Balance (RM)</label>
-        <input type="number" id="month${i}" required />
-      `;
-    });
+<script>
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
 
-    document.getElementById("asbForm").addEventListener("submit", function (e) {
-      e.preventDefault();
+  const balanceContainer = document.getElementById("balanceInputs");
+  months.forEach((month, i) => {
+    balanceContainer.innerHTML += `
+      <label for="month${i}">${month} Balance (RM)</label>
+      <input type="number" id="month${i}" required />
+    `;
+  });
 
-      let balances = [];
-      for (let i = 0; i < 12; i++) {
-        const val = parseFloat(document.getElementById(`month${i}`).value);
-        if (isNaN(val)) {
-          alert(`Please enter a valid number for ${months[i]}`);
-          return;
-        }
-        balances.push(val);
+  document.getElementById("asbForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let balances = [];
+    for (let i = 0; i < 12; i++) {
+      const val = parseFloat(document.getElementById(`month${i}`).value);
+      if (isNaN(val)) {
+        alert(`Please enter a valid number for ${months[i]}`);
+        return;
       }
+      balances.push(val);
+    }
 
-      const dividendRate = parseFloat(document.getElementById("dividendRate").value);
-      const bonusRate = parseFloat(document.getElementById("bonusRate").value);
+    const dividendRate = parseFloat(document.getElementById("dividendRate").value);
+    const bonusRate = parseFloat(document.getElementById("bonusRate").value);
 
-      const avgBalance = balances.reduce((a, b) => a + b, 0) / 12;
-      const dividend = avgBalance * (dividendRate / 100);
-      const bonus = avgBalance * (bonusRate / 100);
-      const total = dividend + bonus;
+    const avgBalance = balances.reduce((a, b) => a + b, 0) / 12;
+    const dividend = avgBalance * (dividendRate / 100);
+    const bonus = avgBalance * (bonusRate / 100);
+    const total = dividend + bonus;
 
-      const resultDiv = document.getElementById("result");
-      resultDiv.innerHTML = `
-        <h3>📊 Result</h3>
-        <p><strong>Average Balance:</strong> RM ${avgBalance.toFixed(2)}</p>
-        <p><strong>Dividend:</strong> RM ${dividend.toFixed(2)}</p>
-        <p><strong>Bonus:</strong> RM ${bonus.toFixed(2)}</p>
-        <p><strong>Total Payout:</strong> RM ${total.toFixed(2)}</p>
-        <p>📅 Year: ${new Date().getFullYear()}</p>
-      `;
-      resultDiv.style.display = "block";
-    });
-  </script>
-</body>
-</html>
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = `
+      <h3>📊 Result</h3>
+      <p><strong>Average Balance:</strong> RM ${avgBalance.toFixed(2)}</p>
+      <p><strong>Dividend:</strong> RM ${dividend.toFixed(2)}</p>
+      <p><strong>Bonus:</strong> RM ${bonus.toFixed(2)}</p>
+      <p><strong>Total Payout:</strong> RM ${total.toFixed(2)}</p>
+      <p>📅 Year: ${new Date().getFullYear()}</p>
+    `;
+    resultDiv.style.display = "block";
+  });
+</script>
