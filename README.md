@@ -12,7 +12,7 @@
 
 ## 🌍 Live Site
 
-Visit the live tool: `https://yourusername.github.io/asb-dividend-calculator/`
+Visit the live tool: `https://9m2pju.github.io/ASB-Dividend-Calculator/`
 
 ## 🛠️ How to Use
 
