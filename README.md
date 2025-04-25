@@ -20,18 +20,6 @@ A simple web-based calculator to estimate your **ASB (Amanah Saham Bumiputera)**
 
 ---
 
-## 🚀 Getting Started
-
-1. Clone or fork this repo:
-   ```bash
-   git clone https://github.com/9M2PJU/ASB-Dividend-Calculator
-   ```
-2. Push to your own GitHub repository.
-3. Enable GitHub Pages in **Settings > Pages** and select the `main` branch.
-4. Done! Your calculator will be live at `https://your-username.github.io/your-repo-name`.
-
----
-
 ## 🧱 Built With
 
 - HTML + JavaScript
