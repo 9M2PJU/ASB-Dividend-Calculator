@@ -37,4 +37,4 @@ This project is licensed under the **Do What the F*ck You Want to Public License
 
 ## 👤 Maintained by
 
-**Faizul** – [9M2PJU](https://hamradio.my)
+[9M2PJU](https://hamradio.my)
