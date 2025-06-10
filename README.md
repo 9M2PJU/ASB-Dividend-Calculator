@@ -20,13 +20,6 @@ A simple web-based calculator to estimate your **ASB (Amanah Saham Bumiputera)**
 
 ---
 
-## 🧱 Built With
-
-- HTML + JavaScript
-- [Jekyll Theme: Hacker](https://pages-themes.github.io/hacker)
-
----
-
 ## 📜 License
 
 ![WTFPL badge](https://img.shields.io/badge/license-WTFPL-brightgreen.svg)
